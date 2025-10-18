@@ -131,11 +131,11 @@ Streamlit UI + Feedback Logger
 
 All discovery-to-delivery materials are located in `/product_strategy_docs/`, including:
 
-1. **01_background_survey.pdf** – Industry evolution & AI adoption trends
-2. **02_market_research_document.pdf** – Competitive landscape & TAM analysis
-3. **03_voice_of_customer_summary.pdf** – User pain points & sentiment insights
-4. **04_ideation_and_feature_prioritization.xlsx** – MoSCoW & RICE scoring
-5. **05_mvp_and_implementation_plan.pdf** – Execution roadmap & KPIs
+1. **01_background_survey** – Industry evolution & AI adoption trends
+2. **02_market_research_document** – Competitive landscape & TAM analysis
+3. **03_voice_of_customer_summary** – User pain points & sentiment insights
+4. **04_ideation_and_feature_prioritization** – MoSCoW & RICE scoring
+5. **05_mvp_and_implementation_plan** – Execution roadmap & KPIs
 
 ---
 
