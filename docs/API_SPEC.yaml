@@ -1,0 +1,74 @@
+openapi: 3.0.1
+info:
+  title: AI Support Assistant API
+  version: 0.1.0
+paths:
+  /ingest:
+    post:
+      summary: Ingest CSV or text files and rebuild index
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200': { description: Index rebuilt }
+  /query:
+    post:
+      summary: Ask a question with optional brand filter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question: { type: string }
+                brand: { type: string, nullable: true }
+                top_k: { type: integer, default: 4 }
+      responses:
+        '200':
+          description: Answer with citations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer: { type: string }
+                  citations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        brand: { type: string }
+                        created_at: { type: string }
+                        text: { type: string }
+                        score: { type: number }
+                  metrics:
+                    type: object
+                    properties:
+                      retrieval_ms: { type: number }
+                      generation_ms: { type: number }
+                      tokens_in: { type: integer }
+                      tokens_out: { type: integer }
+  /feedback:
+    post:
+      summary: Log thumbs up/down for an answer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question: { type: string }
+                answer: { type: string }
+                helpful: { type: boolean }
+      responses:
+        '200': { description: Logged }
